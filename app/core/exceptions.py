@@ -1,4 +1,4 @@
-from fastapi import Request, status
+from fastapi import FastAPI, Request, status
 from fastapi.responses import JSONResponse
 from app.core.logging import logger
 
@@ -28,3 +28,7 @@ async def global_exception_handler(request: Request, exc: Exception):
             "error_code": "INTERNAL_SERVER_ERROR"
         }
     )
+
+def register_exception_handlers(app: FastAPI):
+    app.add_exception_handler(IPONotFoundException, ipo_not_found_exception_handler)
+    app.add_exception_handler(Exception, global_exception_handler)
