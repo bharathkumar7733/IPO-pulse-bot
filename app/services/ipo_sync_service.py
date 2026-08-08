@@ -65,9 +65,13 @@ class IPOSyncService:
             )
             self.db.add(api_log)
 
-            # Extract data list from payload
-            raw_list = raw_payload.get("data", []) if isinstance(raw_payload, dict) else raw_payload
-            if not isinstance(raw_list, list):
+            # Extract data list from payload (handles "data", "ipos", or direct list)
+            raw_list = []
+            if isinstance(raw_payload, dict):
+                raw_list = raw_payload.get("data") or raw_payload.get("ipos") or [raw_payload]
+            elif isinstance(raw_payload, list):
+                raw_list = raw_payload
+            else:
                 raw_list = [raw_payload]
 
             # 2. Parse & Validate via Pydantic
