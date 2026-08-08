@@ -1,0 +1,34 @@
+# Secrets & Credentials
+.env
+.env.local
+.agents/mcp_config.json
+*.pem
+*.key
+
+# Python & Environment
+__pycache__/
+*.py[cod]
+*$py.class
+venv/
+.venv/
+env/
+ENV/
+
+# Database & Storage
+*.db
+*.sqlite
+*.sqlite3
+backups/
+postgres_data/
+
+# Testing & Logs
+.pytest_cache/
+.coverage
+htmlcov/
+*.log
+
+# IDE & OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

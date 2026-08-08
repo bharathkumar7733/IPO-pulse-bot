@@ -1,0 +1,38 @@
+version: '3.8'
+
+services:
+  fastapi_app:
+    build: .
+    container_name: ipo_agent_fastapi
+    restart: always
+    ports:
+      - "8000:8000"
+    environment:
+      - DATABASE_URL=postgresql://ipo_user:ipo_password@postgres_db:5432/ipo_db
+      - TELEGRAM_BOT_TOKEN=${TELEGRAM_BOT_TOKEN}
+      - ADMIN_CHAT_IDS=${ADMIN_CHAT_IDS}
+      - BOT_TEST_MODE=${BOT_TEST_MODE:-false}
+    depends_on:
+      postgres_db:
+        condition: service_healthy
+
+  postgres_db:
+    image: postgres:16-alpine
+    container_name: ipo_agent_postgres
+    restart: always
+    environment:
+      - POSTGRES_USER=ipo_user
+      - POSTGRES_PASSWORD=ipo_password
+      - POSTGRES_DB=ipo_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ipo_user -d ipo_db"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  postgres_data:
