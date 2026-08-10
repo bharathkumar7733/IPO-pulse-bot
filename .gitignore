@@ -1,34 +1,45 @@
-# Secrets & Credentials
-.env
-.env.local
-.agents/mcp_config.json
-*.pem
-*.key
-
-# Python & Environment
+﻿# Python
 __pycache__/
 *.py[cod]
-*$py.class
-venv/
+*.egg-info/
+dist/
+build/
 .venv/
-env/
-ENV/
+venv/
+.eggs/
 
-# Database & Storage
+# Environment
+.env
+*.env.local
+
+# Database
 *.db
-*.sqlite
 *.sqlite3
-backups/
-postgres_data/
 
-# Testing & Logs
-.pytest_cache/
-.coverage
-htmlcov/
+# Logs
 *.log
+logs/
 
-# IDE & OS
+# IDE
 .vscode/
 .idea/
-.DS_Store
-Thumbs.db
+*.swp
+
+# Temp output files
+scripts/probe_output.txt
+scripts/scraper_output.txt
+scripts/digest_output.txt
+
+# Probe/debug scripts (internal dev only)
+scripts/probe_*.py
+scripts/fetch_live_ipo_data.py
+scripts/scrape_and_update_ipos.py
+
+# Scratch test files
+scratch_test_*.py
+
+# Subscribers (contains personal data)
+subscribers.json
+
+# Pytest
+.pytest_cache/
