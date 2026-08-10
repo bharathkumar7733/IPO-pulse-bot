@@ -1,0 +1,10 @@
+{
+  "mcpServers": {
+    "n8n": {
+      "serverUrl": "https://bharathkumar733.app.n8n.cloud/mcp-server/http",
+      "headers": {
+        "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIyNDA4NTk5MS00ZTE2LTQzZjQtOWNjMC05ODk2M2RiMTRlMGQiLCJpc3MiOiJuOG4iLCJhdWQiOiJtY3Atc2VydmVyLWFwaSIsImp0aSI6IjAwNzEwN2FjLWM5ZWQtNDkyMS04NTkyLWUxYTJmMDVhZGFiZiIsImlhdCI6MTc4NjIxMTc4Mn0.Hustzq4KIJOFQ8hYtPKGOKwBOcLC86TrYGMyCEkCLGQ"
+      }
+    }
+  }
+}

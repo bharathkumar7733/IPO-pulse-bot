@@ -1,5 +1,6 @@
 from typing import Dict, Any
 from app.bot import handlers
+from app.bot.subscribers import save_subscriber
 from app.core.logging import logger
 
 async def process_telegram_update(update: Dict[str, Any]):
@@ -9,6 +10,9 @@ async def process_telegram_update(update: Dict[str, Any]):
         return
 
     chat_id = str(message.get("chat", {}).get("id"))
+    if chat_id:
+        save_subscriber(chat_id)
+
     text = (message.get("text") or "").strip()
 
     if not text.startswith("/"):
